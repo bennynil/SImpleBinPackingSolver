@@ -16,4 +16,7 @@ Additional Features:
 
 Cutting Stock Problem: The program can also be adapted to solve cutting stock problems.
 Random Fit Option: Multiple solvers can run concurrently with random box orders to explore different potential solutions and find the best one.
-Limitations: The program can only handle box placements and does not support spherical objects. The quality of the result is assessed based on space utilization rather than the value of the items.
+Limitations: The program can only handle box placements and does not support spherical objects. The quality of the result is assessed based on space utilization rather than the value of the items.  
+app can be found in app folder, use the exe file in it.  
+
+test file also included.
