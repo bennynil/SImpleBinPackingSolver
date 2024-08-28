@@ -16,4 +16,4 @@ Random Fit Option:
 Limitations:   
   The program can only handle box placements and does not support spherical objects. The quality of the result is assessed based on space utilization rather than the value of the items.  
 app can be found in app folder, use the exe file in it.  
-test file also included.
+test file in folder cutboxtest.
