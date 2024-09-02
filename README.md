@@ -7,8 +7,8 @@ Apply First Fit Algorithm:
   This heuristic quickly generates an initial feasible packing solution by trying to minimize wasted space in each bin.  
 
 Refine with Branch and Bound:
-  Improve the solution from Step 2 by employing a Branch and Bound method that explores different box rotations and placements.
-  This step aims to optimize the packing further by considering various orientations and configurations of the boxes.
+  Improve the solution from Step 2 by employing a Branch and Bound method that explores different boxes the box fit in.
+  This step aims to optimize the packing further by considering various choices of the boxes being cut.
 Additional Features:
   Cutting Stock Problem: The program can also be adapted to solve cutting stock problems.
 Random Fit Option:   
