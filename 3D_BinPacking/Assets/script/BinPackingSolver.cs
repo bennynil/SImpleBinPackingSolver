@@ -168,25 +168,12 @@ public class BinPackingSolver: MonoBehaviour
 
     public void packLog()
     {
+        StartCoroutine(packLogBg());
+    }
+    private IEnumerator packLogBg()
+    {
 
         solvingProcess = solvingState.BuildingAnswer;
-
-        allStatic = true;
-
-        while (allStatic)
-        {
-            foreach (BoxInScene boxInScene in boxesInScene)
-            {
-                
-                if (!boxInScene.isStaticObject())
-                {
-                    allStatic = false;
-                    break;
-                }
-                
-
-            }
-        }
 
         solvingProcess = solvingState.FindAnswer;
 
@@ -194,15 +181,22 @@ public class BinPackingSolver: MonoBehaviour
 
         solutionsStrings = new List<string>();
         int i = 0;
-        int[] td = boxesInScene[i].box.threeDimension;
-        int[] pos = boxesInScene[i].box.lbdCorner;
-        int[] length = boxesInScene[i].box.edgeLength;
-        string step = "step" + i;
-        string put = "put box " + boxesInScene[i].box.name + " -> " + "( " + td[0] + " , " + td[1] + " , " + td[2] + ")" + "to";
-        string rotation = "direction in: " + "( " + length[0] + " , " + length[1] + " , " + length[2] + " )";
-        string with = "position :" + "( " + pos[0] + " , " + pos[1] + " , " + pos[2] + " )";
+        while(i < boxesInScene.Length)
+        {
+            int[] td = boxesInScene[i].box.threeDimension;
+            int[] pos = boxesInScene[i].box.lbdCorner;
+            int[] length = boxesInScene[i].box.edgeLength;
+            string step = "step" + i;
+            string put = "put box " + boxesInScene[i].box.name + " -> " + " ( " + td[0] + " , " + td[1] + " , " + td[2] + ") " + "to";
+            string rotation = "direction in: " + " ( " + length[0] + " , " + length[1] + " , " + length[2] + " ) ";
+            string with = "position :" + "( " + pos[0] + " , " + pos[1] + " , " + pos[2] + " )";
+            Debug.Log("??");
+            solutionsStrings.Add(step + "\n" + put + "\n" + rotation + "\n" + with + "\n");
+            i++;
 
-        solutionsStrings.Add(step + "\n" + put + "\n" + rotation + "\n" + with + "\n");
+            yield return null;
+        }
+        
 
     }
 
@@ -233,7 +227,14 @@ public class BinPackingSolver: MonoBehaviour
         bestRe = new List<Box>();
 
 
-
+        if(solutionsStrings != null)
+        {
+            solutionsStrings.Clear();
+        }
+        else
+        {
+            solutionsStrings = new List<string>();
+        }
 
         List<Box> needs = new List<Box>();
 
@@ -376,7 +377,7 @@ public class BinPackingSolver: MonoBehaviour
         Vector3 offset_t = new Vector3(0, 0, showBackwardOffset);
         transform.position = offset_t;
         boxesRotater.rotation = Quaternion.Euler(0f, 180f, 0f);
-
+        packLog();
         startmp = true;
     }
 

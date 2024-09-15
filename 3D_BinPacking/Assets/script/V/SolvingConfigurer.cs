@@ -101,6 +101,14 @@ public class SolvingConfigurer : MonoBehaviour
         }
         else
         {
+
+
+
+
+
+
+
+
             string stext = "";
             foreach(string line in solver.solutionsStrings)
             {
